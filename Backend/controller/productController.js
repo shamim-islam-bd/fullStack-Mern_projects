@@ -2,6 +2,7 @@
 // internal imports
 const Product = require('../models/Product'); //from Product Schama
 
+
 // createing Product by-- Admin
 exports.createProduct = async(req, res, next) => {
  try {
@@ -43,19 +44,22 @@ exports.getProduct = async(req,res) => {
 
 // Updating Products by--- Admin
 exports.updateProduct = async(req, res, next) => {
+    const id = req.params.id
+    const body = req.body
     try {
-        const Product = await Product.findByID(req.params.id);
-        if(!Product){
-            return res.status(500).json({
+        const product = await Product.findById(id);
+
+        if(!product){
+            return res.status(404).json({
                 Success: false,
                 message: "Product Not Found"
             })
         }
 
-        const updatedproduct = await Product.findByIdAndUpdate(
-            req.params.id, 
-            req.body, 
-            {new: true, runValidators: true, useFindAndModify: false}
+       updatedproduct = await Product.findByIdAndUpdate(
+            id, 
+            body, 
+            {new: true}
         )
 
         res.status(200).json({
@@ -67,6 +71,7 @@ exports.updateProduct = async(req, res, next) => {
         res.status(404).json({error: error.message})
     }
 }
+
 
 
 // Delete Products by--- Admin
