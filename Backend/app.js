@@ -15,8 +15,8 @@ const express = require('express')
 const dotenv = require('dotenv');
 
 // internal imports
-const inboxRouter = require('./routes/productRouter');
-
+const { getAllProducts } = require('./controller/ProductController');
+const DataBaseConfiguration = require('./config/database');
 
 // config calling.
 const app = express();
@@ -27,10 +27,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // database Connection
-
+DataBaseConfiguration();
 
 // Routings.
-app.use('/', inboxRouter)
+app.use('/', getAllProducts)
 
 
 // 404 error handling.
