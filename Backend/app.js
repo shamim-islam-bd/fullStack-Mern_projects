@@ -15,7 +15,7 @@ const express = require('express')
 const dotenv = require('dotenv');
 
 // internal imports
-const { getAllProducts } = require('./controller/ProductController');
+const { getAllProducts, createProduct } = require('./controller/ProductController');
 const DataBaseConfiguration = require('./config/database');
 
 // config calling.
@@ -30,13 +30,15 @@ app.use(express.urlencoded({extended: true}));
 DataBaseConfiguration();
 
 // Routings.
-app.use('/', getAllProducts)
+app.use('/products', getAllProducts);
+app.use('/product', createProduct);
 
 
 // 404 error handling.
 
 
 // Common error handling.
+
 
 
 // app listing
