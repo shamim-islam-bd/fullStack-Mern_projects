@@ -89,7 +89,7 @@ exports.deleteProduct = async(req, res, next) => {
 
     res.status(200).json({
         Success: true,
-        message: "Product remove successfully."
+        message: "Product Deleted successfully."
     })
 
     } catch (error) {
