@@ -51,5 +51,5 @@ app.use(errorHandler);
 // app listing
 // exports.AppServer = 
 app.listen(process.env.PORT, () =>{
-    console.log(`App listing on ${process.env.PORT}`)
+    console.log(`App listing on ${process.env.PORT}`);
 })

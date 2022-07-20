@@ -1,6 +1,7 @@
 
 // internal imports
 const Product = require('../models/Product'); //from Product Schama
+const ApiFeathers = require('../utils/apiFeathers');
 
 
 // createing Product by-- Admin
@@ -21,6 +22,9 @@ exports.createProduct = async(req, res, next) => {
 // geting all product --
 exports.getAllProducts = async(req, res) => {
     try {
+
+      const apiFeathers = new ApiFeathers(Product.find(), req.query); 
+
        const products = await Product.find();
         // console.log(products);
        res.status(201).json({ products, Success: true })

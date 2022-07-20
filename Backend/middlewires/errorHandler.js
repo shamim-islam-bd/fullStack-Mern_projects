@@ -30,10 +30,3 @@ process.on("uncaughtException",  err => {
     console.log(`error: ${err.message}`);
     process.exit(1);
 })
-
-
-// Wrong mongodb ID error
-// if(error.name === "CastError"){
-//     const message = `Resource Not Found. Invailed : ${error.path}`;
-//     res.status(400).send(error.message);
-// }
