@@ -17,6 +17,7 @@ exports.createProduct = async(req, res, next) => {
 }
 
 
+
 // geting all product --
 exports.getAllProducts = async(req, res) => {
     try {

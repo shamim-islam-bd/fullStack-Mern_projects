@@ -1,7 +1,7 @@
 
 // const createError = require('http-errors');
 
-const { AppServer } = require("../app");
+// const { AppServer } = require("../app");
 
 
 // 404 not Found handler.
@@ -25,15 +25,15 @@ exports.errorHandler = (req, res, next) => {
 }
 
 
-// Unhandle Promise Rejection Error
-process.on("unhandleRejection", err => {
+// Handle Unchaught Expressions.
+process.on("uncaughtException",  err => {
     console.log(`error: ${err.message}`);
-    console.log(`Shounting Down the server due to unhanle promise rejection!`)
-
-    AppServer.close(()=> {
-        process.exit(1);
-    });
+    process.exit(1);
 })
 
 
-// module.exports = {notFoundPage}
+// Wrong mongodb ID error
+// if(error.name === "CastError"){
+//     const message = `Resource Not Found. Invailed : ${error.path}`;
+//     res.status(400).send(error.message);
+// }
