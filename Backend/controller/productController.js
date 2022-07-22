@@ -1,7 +1,7 @@
 
 // internal imports
 const Product = require('../models/Product'); //from Product Schama
-const ApiFeathers = require('../utils/apiFeathers');
+const ApiFeathers = require('../utils/apiFeathers')
 
 
 // createing Product by-- Admin
@@ -24,11 +24,12 @@ exports.getAllProducts = async(req, res) => {
     try {
 
        // Passing parameters on the ApiFeathers class component from here.
-       const apiFeathers = new  ApiFeathers(Product.find(), req.query).search(); 
+      const apiFeathers = new ApiFeathers(Product.find(), req.query).search();
 
-       const products = await apiFeathers.query; 
+      const products = await apiFeathers.query;
         // console.log(products);
-       res.status(201).json({ products, Success: true })
+
+       res.status(201).json({Success: true, products})
      } catch (error) {
        res.status(404).json({error: error.message})
      }
@@ -40,7 +41,7 @@ exports.getProduct = async(req,res) => {
     const id = req.params.id
     try {
         const product = await Product.findById(id);
-        res.status(201).json({product, Success: true})
+        res.status(201).json({Success: true, product})
     } catch (error) {
         res.status(404).json({error: error.message})
     }
