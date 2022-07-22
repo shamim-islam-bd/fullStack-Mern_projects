@@ -6,9 +6,21 @@ class ApiFeathers {
 
 
     search() {
-     this.queryStr.keyword ? {} : {}
+      // if queryStr exist
+     this.queryStr.keyword ? 
+     {
+       name: {
+        $regex: this.queryStr.keyword,
+        $option: "i",
+       },
+     } : {}
+
+     console.log(keyword);
+
+     this.query = this.query.find({...keyword});
+     return this;
     }
-
-
-
 }
+
+
+module.exports = ApiFeathers;

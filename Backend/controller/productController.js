@@ -23,9 +23,10 @@ exports.createProduct = async(req, res, next) => {
 exports.getAllProducts = async(req, res) => {
     try {
 
-      const apiFeathers = new ApiFeathers(Product.find(), req.query); 
+       // Passing parameters on the ApiFeathers class component from here.
+       const apiFeathers = new  ApiFeathers(Product.find(), req.query).search(); 
 
-       const products = await Product.find();
+       const products = await apiFeathers.query; 
         // console.log(products);
        res.status(201).json({ products, Success: true })
      } catch (error) {
