@@ -5,7 +5,7 @@ class ApiFeatures {
   }
 
     search() {
-      // if queryStr exist
+      // if queryStr exist.........
       const keyword = this.queryStr.keyword ? 
         {
           name: {
