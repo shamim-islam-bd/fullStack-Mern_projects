@@ -23,8 +23,15 @@ exports.createProduct = async(req, res, next) => {
 exports.getAllProducts = async(req, res) => {
     try {
 
+      //Pagination...
+      const resultPerPage = 5;
+
+
        // Passing parameters on the ApiFeathers class component from here.
-      const apiFeathers = new ApiFeathers(Product.find(), req.query).search();
+      const apiFeathers = new ApiFeathers(Product.find(), req.query)
+      .search()
+      .filter()
+      .pagination(resultPerPage);
 
       const products = await apiFeathers.query;
         // console.log(products);
@@ -78,7 +85,6 @@ exports.updateProduct = async(req, res, next) => {
         res.status(404).json({error: error.message})
     }
 }
-
 
 
 // Delete Products by--- Admin

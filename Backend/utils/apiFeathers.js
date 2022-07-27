@@ -15,11 +15,46 @@ class ApiFeatures {
         }
         : {};
 
-      console.log(keyword);
+      // console.log(keyword);
 
      this.query = this.query.find({ ...keyword });
      return this;
     }
+
+
+   //here, this.query = find() 
+
+
+   filter(){
+     const queryCopy = {...this.queryStr}
+
+     // Removing some files for catagories.
+     const removeFiels = ["keyword","page","limit"];
+     removeFiels.forEach(key=>delete queryCopy[key])
+    //  console.log(queryCopy);
+    
+    // filter for price & rating.
+     let queryStr = JSON.stringify(queryCopy);
+     queryStr = queryStr.replace(/\b(gt|gte|lt|gte)\b/g, key=>`$${key}`);
+
+     this.query = this.query.find(JSON.parse(queryStr));
+    //  console.log(queryStr);
+     return this;
+   }
+
+
+ // pagination
+
+ pagination (resultPerPage){
+  const currentPage = Number(this.queryStr.page) || 1;
+  const skip = resultPerPage * (currentPage -1) 
+  this.query = this.query.limit(resultPerPage).skip(skip);
+
+  return this; 
+ }
+
+
+
 }
 
 
