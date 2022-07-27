@@ -1,6 +1,6 @@
 
 // internal imports
-const Product = require('../models/Product'); //from Product Schama
+const Product = require('../models/ProductSchema'); //from Product Schama
 const ApiFeathers = require('../utils/apiFeathers')
 
 
@@ -23,15 +23,17 @@ exports.createProduct = async(req, res, next) => {
 exports.getAllProducts = async(req, res) => {
     try {
 
-      //Pagination...
+      //Pagination value...
       const resultPerPage = 5;
+      const productCount = await Product.countDocuments();
 
 
-       // Passing parameters on the ApiFeathers class component from here.
+    // Passing parameters on the ApiFeathers class component from here.
       const apiFeathers = new ApiFeathers(Product.find(), req.query)
       .search()
       .filter()
-      .pagination(resultPerPage);
+      .pagination(resultPerPage)
+      .productCount();
 
       const products = await apiFeathers.query;
         // console.log(products);

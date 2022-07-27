@@ -1,13 +1,8 @@
 
-// const createError = require('http-errors');
-
-// const { AppServer } = require("../app");
-
-
 // 404 not Found handler.
 exports.notFoundPage =(req, res, next)=> {
     // next(createError(404, "Page not Found....!"))
-    next(res.status(500).send("Page not Found!"))
+    next(res.status(500).json("Page not Found!"))
 }
 
 
@@ -17,9 +12,9 @@ exports.errorHandler = (req, res, next) => {
     next("there was a Problem");
    }else{
     if(err.message){
-        res.status(500).send(err.message)
+        res.status(500).json(err.message)
     }else{
-        res.status(500).send("There was an error!")
+        res.status(500).json("There was an error!")
     }
    }
 }

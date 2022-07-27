@@ -23,6 +23,7 @@ const dotenv = require('dotenv');
 const productRoute = require('./routes/productRouter')
 const DataBaseConfiguration = require('./config/database');
 const { notFoundPage, errorHandler } = require('./middlewires/errorHandler');
+const userRoute = require('./routes/userRoute')
 
 // config calling.
 const app = express();
@@ -38,6 +39,7 @@ DataBaseConfiguration();
 // Routings.
 // app.use('/', getAllProducts);
 app.use('/products', productRoute);
+app.use('/', userRoute);
 
 
 // 404 page error handling.
