@@ -1,9 +1,7 @@
 // internal imports
-
 const User = require("../models/UserSchema");
 const sendToken = require("../utils/jwtToken");
 
-// const User = User()
 
 //Register a user...
 exports.RegisterUser = async (req, res, next) => {
@@ -20,7 +18,7 @@ exports.RegisterUser = async (req, res, next) => {
 
         // const token = user.getJWTtoken();
         // res.status(201).json({success: true, token})
-        sendToken(user, 201, res);
+        sendToken(user, res);
 
     } catch (error) {
         res.status(404).json({error: error.message})
@@ -49,15 +47,34 @@ exports.loginUser = async(req, res, next) => {
       if(!isPasswordMatched){
             res.status(401).json({message: 'invalid email or password'})
        }else {
-        //    const token = user.getJWTtoken();
-        //    res.status(200).json({success: true, token})
-        sendToken(user, 201, res)
+        sendToken(user, res)
        }
       
-
-
     } catch (error) {
         next(error)
+        res.status(404).json({error: error.message})
+    }
+}
+
+
+
+// LogOut USer...
+exports.LogOut = async (req, res, next) => {
+    try {
+        console.log(req)
+
+        if(req.cookie){
+            req.cookie("token",null,{
+                expires: new Date(Date.now()),
+                httpOnly: true,
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "logOut successFully"
+        })
+    } catch (error) {
         res.status(404).json({error: error.message})
     }
 }

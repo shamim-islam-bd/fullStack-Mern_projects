@@ -18,6 +18,7 @@
 // external imports
 const express = require('express')
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser')
 
 // internal imports
 const productRoute = require('./routes/productRouter')
@@ -28,6 +29,8 @@ const userRoute = require('./routes/userRoute')
 // config calling.
 const app = express();
 dotenv.config();
+app.use(express.json());
+app.use(cookieParser());
 
 // response parses 
 app.use(express.json());

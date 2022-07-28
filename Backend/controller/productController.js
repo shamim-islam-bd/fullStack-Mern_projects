@@ -25,7 +25,7 @@ exports.getAllProducts = async(req, res) => {
 
       //Pagination value...
       const resultPerPage = 5;
-      const productCount = await Product.countDocuments();
+    //   const productCount = await Product.countDocuments();
 
 
     // Passing parameters on the ApiFeathers class component from here.
@@ -33,7 +33,7 @@ exports.getAllProducts = async(req, res) => {
       .search()
       .filter()
       .pagination(resultPerPage)
-      .productCount();
+    //   .productCount();
 
       const products = await apiFeathers.query;
         // console.log(products);
