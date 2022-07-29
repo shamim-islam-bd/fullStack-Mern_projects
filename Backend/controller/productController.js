@@ -46,7 +46,7 @@ exports.getAllProducts = async(req, res) => {
 
 
 // Geting Single Product --
-exports.getProduct = async(req,res) => {
+exports.getSingleProduct = async(req,res) => {
     const id = req.params.id
     try {
         const product = await Product.findById(id);
