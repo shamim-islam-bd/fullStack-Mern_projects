@@ -61,14 +61,17 @@ exports.loginUser = async(req, res, next) => {
 // LogOut USer...
 exports.LogOut = async (req, res, next) => {
     try {
-        console.log(req)
-
-        if(req.cookie){
-            req.cookie("token",null,{
-                expires: new Date(Date.now()),
-                httpOnly: true,
-            });
-        }
+        // It also works....
+        // if(req.cookie){
+        //     req.cookie("token",null,{
+        //         expires: new Date(Date.now()),
+        //         httpOnly: true,
+        //     });
+        // }
+        res.cookie("token",null,{
+            expires: new Date(Date.now()),
+            httpOnly: true,
+        });
 
         res.status(200).json({
             success: true,
