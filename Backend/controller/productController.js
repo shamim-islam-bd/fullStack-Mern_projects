@@ -7,6 +7,9 @@ const ApiFeathers = require('../utils/apiFeathers')
 // createing Product by-- Admin
 exports.createProduct = async(req, res, next) => {
  try {
+     // console.log(req.user.id);
+    req.body.user = req.user.id
+
     const product = await Product.create(req.body)
     // console.log(product);
 
@@ -22,7 +25,6 @@ exports.createProduct = async(req, res, next) => {
 // geting all product --
 exports.getAllProducts = async(req, res) => {
     try {
-
       //Pagination value...
       const resultPerPage = 5;
     //   const productCount = await Product.countDocuments();

@@ -21,10 +21,10 @@ const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser')
 
 // internal imports
-const productRoute = require('./routes/productRouter')
+const productRoute= require('./routes/productRouter')
 const DataBaseConfiguration = require('./config/database');
 const { notFoundPage, errorHandler } = require('./middlewires/errorHandler');
-const userRoute = require('./routes/userRoute')
+const userRoute = require('./routes/userRoute');
 
 // config calling.
 const app = express();
@@ -40,9 +40,8 @@ app.use(express.urlencoded({extended: true}));
 DataBaseConfiguration();
 
 // Routings.
-// app.use('/', getAllProducts);
 app.use('/products', productRoute);
-app.use('/', userRoute);
+app.use('/user', userRoute);
 
 
 // 404 page error handling.

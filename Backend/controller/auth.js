@@ -3,13 +3,14 @@ const User = require("../models/UserSchema");;
 
 
 // User Authentications form here.
-exports.isAuthentication = async (req, res, next) =>{
+exports.isAuthentication = async (req, res, next) => {
     try {
         const {token} = req.cookies;
         // console.log(token);
 
         if(!token){
-            return next("Please login to access this.")
+            res.status(401).json({error: "unAuthorised"});
+            next();
         }else{
          const decodedData = jwt.verify(token, process.env.JWT_SECRET);
          req.user = await User.findById(decodedData.id);
@@ -23,18 +24,17 @@ exports.isAuthentication = async (req, res, next) =>{
 }
 
 
-
-exports.authorizationROle = (...roles) =>{
+// Authorization By -----ROle
+exports.authorizationROle = (...roles) => {
     try {
-        // console.log("first")
         return (req, res, next) => {
-        //parameter a ja pabe otar ste ata mil na hole this.   
-        console.log(req.user.role)
-        console.log(roles)
-           if(!roles.includes(req.user.role)){
-             return next(`Role: ${req.user.role} is not allowed this Route.`);
-           }
-           
+          const isAdmin = roles.includes(req.user.role)
+
+          if(isAdmin){
+            next() // getAllProducts a jabe if admin thake.
+          }else{
+            res.status(401).json({ success: false, Role: `${req.user.role} is not allowed this Route.`});
+          }
         }
         
     } catch (error) {

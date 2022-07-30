@@ -61,11 +61,14 @@ userSchama.methods.getJWTToken = function(){
 }
 
 
-// compare password
+// compare password......
 userSchama.methods.comparePassword = async function(enteredpassword){
   const pass = await bcrypt.compare(enteredpassword, this.password)
   return pass;
 }
+
+// Reset password....
+
 
 
 const User = mongoose.model("User", userSchama);
