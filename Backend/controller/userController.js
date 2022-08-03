@@ -212,7 +212,8 @@ exports.updateProfile = async(req, res, next) => {
 
     // we will add cloudinery later.
 
-    const user = User.findByIdAndUpdate(req.user.id, userData, {new: true})
+    const user = await User.findByIdAndUpdate(req.user.id, userData, {new: true})
+    console.log( "after update", user);
 
     res.status(200).json({
         success: true,
