@@ -120,9 +120,7 @@ exports.forgotPassword = async(req, res, next) => {
         await user.save({validateBeforeSave: false});
         return next(error.message);
       }
-
     }
-
 
   } catch (error) {
     res.status(404).json({error: error.message})
@@ -132,7 +130,8 @@ exports.forgotPassword = async(req, res, next) => {
 
 // Reset Password.....
 exports.resetPassword = async(req, res, next) => {
- //creating token Hasing 
+  try {
+    //creating token Hasing 
   const resetPasswordToken = crypto
   .createHash("sha256")
   .update(req.params.token)
@@ -158,4 +157,71 @@ exports.resetPassword = async(req, res, next) => {
 
   await user.save();
   sendToken(user, res)
+  } catch (error) {
+    res.status(404).json({error: error.message});
+  }
+};
+
+
+// GettUser detailes........
+exports.getUserDetails = async(req, res, next) => {
+  try {
+    const user = await User.findById(req.body.id);
+    res.status(200).json({
+        success: true,
+        user,
+    })
+  } catch (error) {
+    res.status(404).json({error: error.message});
+  }
 }
+
+// update & Change user password........
+exports.updateUserPassword = async(req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id);
+    const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
+
+    if(!isPasswordMatched){
+          res.status(401).json({message: 'invalid email or old password is incorrect'})
+     }
+    
+    if(req.body.newPassword !== req.body.confirmPassword){
+        res.status(401).json({message: "Password doesn't match"})
+    }
+
+    user.password = req.body.newPassword;
+    await user.save();
+
+    res.status(200).json({
+        success: true,
+        user,
+    })
+  } catch (error) {
+    res.status(404).json({error: error.message});
+  }
+}
+
+// update Profile........
+exports.updateProfile = async(req, res, next) => {
+  try {
+    const userData = {
+        name: req.body.name,
+        email: req.body.email
+    }
+
+    // we will add cloudinery later.
+
+    const user = User.findByIdAndUpdate(req.user.id, userData, {new: true})
+
+    res.status(200).json({
+        success: true,
+        message: "profile Updated successfully"
+    })
+  } catch (error) {
+    res.status(404).json({error: error.message})
+  }
+}
+
+
+
