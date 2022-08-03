@@ -2,7 +2,7 @@
 const User = require("../models/UserSchema");
 const sendToken = require("../utils/jwtToken");
 const { SendEmail } = require("../utils/sendEmail");
-
+const crypto = require("crypto");
 
 //Register a user...
 exports.RegisterUser = async (req, res, next) => {
@@ -94,11 +94,11 @@ exports.forgotPassword = async(req, res, next) => {
         return next("User not found!")
     }else{
       // Geting reset password token.
-      const restToken = user.getResetPasswordToken();
+      const resetToken = user.getResetPasswordToken();
       await user.save({validateBeforeSave: false});
 
       // insted of this  -- http://localhost:5000/user/restPassword
-      const resetPassUrl = `${req.protocol}://${req.get("host")}/password/forgot${restToken}`
+      const resetPassUrl = `${req.protocol}://${req.get("host")}/user/password/reset/${resetToken}`;
       
       const message = `your password reset token is :- \n \n ${resetPassUrl} \n \n if you have not resqusted this email then please ignore it.`
 
@@ -127,4 +127,35 @@ exports.forgotPassword = async(req, res, next) => {
   } catch (error) {
     res.status(404).json({error: error.message})
   }
+}
+
+
+// Reset Password.....
+exports.resetPassword = async(req, res, next) => {
+ //creating token Hasing 
+  const resetPasswordToken = crypto
+  .createHash("sha256")
+  .update(req.params.token)
+  .digest("hex");
+
+  const user = await User.findOne({
+   resetPasswordToken,
+   resetPasswordExpire: {$gt: Date.now()},
+  });
+
+  if(!user){
+    return next("Reset Passwerd token invalied has be expired!")
+  }
+
+  if(req.body.password !== req.body.confirmPassword){
+    return next("password doesn't matched.");
+  }
+  
+  user.password = req.body.password;
+
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpire = undefined;
+
+  await user.save();
+  sendToken(user, res)
 }

@@ -1,5 +1,7 @@
 const nodeMailer = require("nodemailer");
 
+
+// Send Reset password token from this sendemail.
 exports.SendEmail = async(options) => {
   const transporter = nodeMailer.createTransport({
     service: process.env.SMPT_SERVICE,
