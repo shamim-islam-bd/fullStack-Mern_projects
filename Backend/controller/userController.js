@@ -388,13 +388,16 @@ exports.DeleteReview = async(req, res, next) => {
 
     const numberOfReviews = reviews.length;
 
-    await product.findByIdAndUpdate(req.query.productId, {
-      reviews, ratings, numberOfReviews
-    },{new: true})
+    await Product.findByIdAndUpdate(
+      req.query.productId, 
+      { reviews,
+        rating: Number(ratings),
+        numberOfReviews
+      },{new: true});
 
     res.status(200).json({
       success: true,
-      reviews: product.reviews
+      message: "successfully deleted"
     })
 
   } catch (error) {
