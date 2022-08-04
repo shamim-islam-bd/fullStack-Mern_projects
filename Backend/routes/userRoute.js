@@ -1,6 +1,6 @@
 const express = require("express");
 const { isAuthentication } = require("../controller/auth");
-const { RegisterUser, loginUser, LogOut, forgotPassword, resetPassword, getUserDetails, updateUserPassword, updateProfile, getAllUsers, getSingleUser, updateRole, DeleteUser, createReview } = require("../controller/userController");
+const { RegisterUser, loginUser, LogOut, forgotPassword, resetPassword, getUserDetails, updateUserPassword, updateProfile, getAllUsers, getSingleUser, updateRole, DeleteUser, createReview, getAllReviews, DeleteReview } = require("../controller/userController");
 const router = express.Router();
 
 router.post('/register', RegisterUser);
@@ -12,7 +12,10 @@ router.put('/password/reset/:token', resetPassword);
 router.put('/password/update', isAuthentication, updateUserPassword);
 router.get('/logout', LogOut);
 
+// Review
 router.put('/review', isAuthentication, createReview);
+router.get('/allReviews', isAuthentication, getAllReviews);
+router.delete('/review/delete', isAuthentication, DeleteReview);
 
 router.get('/admin/getAllUsers', isAuthentication, getAllUsers);
 router.get('/admin/user/:id', isAuthentication, getSingleUser);
