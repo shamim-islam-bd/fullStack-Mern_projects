@@ -3,6 +3,7 @@ const User = require("../models/UserSchema");
 const sendToken = require("../utils/jwtToken");
 const { SendEmail } = require("../utils/sendEmail");
 const crypto = require("crypto");
+const Product = require("../models/ProductSchema");
 
 //Register a user...
 exports.RegisterUser = async (req, res, next) => {
@@ -213,8 +214,6 @@ exports.updateProfile = async(req, res, next) => {
     // we will add cloudinery later.
 
     const user = await User.findByIdAndUpdate(req.user.id, userData, {new: true})
-    console.log( "after update", user);
-
     res.status(200).json({
         success: true,
         message: "profile Updated successfully"
@@ -225,4 +224,123 @@ exports.updateProfile = async(req, res, next) => {
 }
 
 
+// Get all users only -- ((Admin)) can access.
+exports.getAllUsers = async(req, res, next) => {
+ try {
+  const user = await User.find();
+  res.status(200).json({
+    success: true,
+    user
+  })
+ } catch (error) {
+   res.status(404).json({error: error.message})
+ }
+}
 
+// Get single users only -- ((Admin)) can access.
+exports.getSingleUser = async(req, res, next) => {
+ try {
+  const user = await User.findById(req.params.id);
+
+  if(!user){
+    return next("User doesn't excist!")
+  }
+
+  res.status(200).json({
+    success: true,
+    user
+  })
+ } catch (error) {
+   res.status(404).json({error: error.message})
+ }
+}
+
+
+
+// update User Role  -- ((Admin))
+exports.updateRole = async(req, res, next) => {
+  try {
+    const userData = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role
+    }
+
+    // we will add cloudinery later.
+
+    const user = await User.findByIdAndUpdate(req.params.id, userData, {new: true})
+    res.status(200).json({
+        success: true,
+        message: "User Role Updated successfully"
+    })
+  } catch (error) {
+    res.status(404).json({error: error.message})
+  }
+}
+
+
+// Delete User -- ((Admin))
+exports.DeleteUser = async(req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id);
+    console.log(user);
+
+    if(!user){
+      return next("User doesn't exist!");
+    }else{
+      user.remove();
+    }
+
+    res.status(200).json({
+        success: true,
+        message: "Deleted successfully"
+    })
+  } catch (error) {
+    res.status(404).json({error: error.message})
+  }
+}
+
+
+
+// create Product review & update review...
+exports.createReview = async(req, res, next) => {
+  try {
+    const {rating, comment, productId} = req.body;
+    const review = { 
+      user: req.user._id,
+      name: req.user.name,
+      rating: Number(rating),
+      comment
+    }
+
+    const product = await Product.findById(productId);
+
+    // finding this user that has already reviewed on this product or not.
+    const isReviewed = product.reviews.find(rev => rev.user === req.user._id );
+    if(isReviewed){
+      product.reviews.forEach(rev => {
+        rev.rating = rating,
+        rev.comment = comment
+      })
+    }else{
+       product.reviews.push(review);
+       product.numberOfReviews = product.reviews.length;
+    }
+  
+    // calculate avarage rating & set on ratings.
+    let avg = 0;
+    product.ratings = product.reviews.forEach(rev => {
+      avg =+ rev.rating    // avg = avg + rev.rating; 
+    })
+    // 2, 3, 5, 6 = 16/4 => avg = 4
+    product.ratings = avg / product.reviews.length;
+  
+    await product.save({validateBeforeSave: false})
+    res.status(200).json({
+      success: true,
+    });
+
+  } catch (error) {
+    res.status(404).json({error: error.message})
+  }
+}

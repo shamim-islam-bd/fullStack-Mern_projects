@@ -40,8 +40,9 @@ app.use(express.urlencoded({extended: true}));
 DataBaseConfiguration();
 
 // Routings.
-app.use('/products', productRoute);
+app.use('/', productRoute);
 app.use('/user', userRoute);
+// app.use('/admin', userRoute);
 
 
 // 404 page error handling.
