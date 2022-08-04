@@ -1,6 +1,6 @@
 const express = require('express');
-const { isAuthentication , authorizationROle} = require('../controller/auth');
 const router = express.Router();
+const { isAuthentication , authorizationROle} = require('../controller/auth');
 const { getAllProducts, createProduct, updateProduct, deleteProduct,getSingleProduct } = require('../controller/productController');
 
 
