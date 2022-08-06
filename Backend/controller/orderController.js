@@ -93,8 +93,8 @@ exports.updateOrder = async(req, res, next) => {
         if(!order){
           res.status(404).json({message: "Order not found with this ID"});
         }else{
-          order.orderItems.forEach(async(order) => {
-            await updateStock(order.product, order.quantity);
+          order.orderItems.forEach(async(odr) => {
+            await updateStock(odr.product, odr.quantity);
           });
 
           order.orderStatus = req.body.status;
