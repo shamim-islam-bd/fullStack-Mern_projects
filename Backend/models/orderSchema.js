@@ -5,7 +5,7 @@ const orderSchema = new mongoose.Schema({
         address:{ type: String, required: true},
         city:   { type: String, required: true},
         country:{ type: String, required: true},
-        phoneNo:{ type: Number, required: true},
+        phone:  { type: Number, required: true},
         pinCode:{ type: Number, required: true},
     },
     orderItems: [
@@ -49,7 +49,7 @@ const orderSchema = new mongoose.Schema({
         },
         paidAt: {
             type: Date,
-            required: true,
+            // required: true,
         },
     },
     itemsPrice: {
@@ -73,7 +73,8 @@ const orderSchema = new mongoose.Schema({
         required: true,
         default: "Processing"
     },
-    deliverAt: Date,
+    
+    delivereAt: Date,
     createdAt: {
         type: Date,
         default: Date.now,
