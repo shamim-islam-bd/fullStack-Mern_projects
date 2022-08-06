@@ -83,8 +83,6 @@ exports.updateOrder = async(req, res, next) => {
     // forntend theke order id ta pabo seta schamar ste validation hbe.
     const order = await Order.findById(req.params.id)
 
-    console.log(order.orderStatus);
-
     // Order status checking from here.
     if(order.orderStatus === "Delivered"){
         return res.status(404).json({
@@ -92,14 +90,18 @@ exports.updateOrder = async(req, res, next) => {
         })
     }else {
         // Order delivery howar por jeno product quantity update hoy & product na thakle outOfStock dekhay.
-        order.orderItems.forEach(async(order) => {
-          await updateStock(order.product, order.quantity);
-        });
+        if(!order){
+          res.status(404).json({message: "Order not found with this ID"});
+        }else{
+          order.orderItems.forEach(async(order) => {
+            await updateStock(order.product, order.quantity);
+          });
 
-        order.orderStatus = req.body.status;
-        // Order status sending from here.
-        if(req.body.status === "Delivered"){
-          order.delivereAt = Date.now();
+          order.orderStatus = req.body.status;
+          // Order status sending from here.
+          if(req.body.status === "Delivered"){
+            order.delivereAt = Date.now();
+          }
         }
     }
 
@@ -141,5 +143,3 @@ exports.deleteOrder = async(req, res, next) => {
     res.status(404).json({error: error.message})
   }
 }
-
-
