@@ -8,30 +8,38 @@ module.exports = {
   ],
   theme: {
     extend: {
-      theme: {
-        screens: {
-          sm: '576px',
-          md: '768px',
-          lg: '992px',
-          xl: '1200px',
+      container: {
+        center: true,
+      },
+      flex : {
+        
+      },
+      colors: {
+        'primary':'#FD3D57',
+        'primary-transparent':'#f2377f',
+        'purple': '#3f3cbb',
+        'blue-transparent': '#0f3460',
+      },
+      border: {
+        "border": '2px solid rgba(0, 0, 0, 0.1)'
+      },
+      screens: {
+        sm: '576px',
+        md: '768px',
+        lg: '992px',
+        xl: '1200px',
+      },
+      fontFamily: {
+        play: ['Play', 'sans-serif'], 
+        sans: ['Graphik', 'sans-serif'],
+      },
+      extend: {
+        spacing: {
+          '128': '32rem',
+          '144': '36rem',
         },
-        colors: {
-          'primary':'#FD3D57',
-          'blue': '#1fb6ff',
-        },
-        fontFamily: {
-          play: ['Play', 'sans-serif'], 
-          sans: ['Graphik', 'sans-serif'],
-          // serif: ['Merriweather', 'serif'],
-        },
-        extend: {
-          spacing: {
-            '128': '32rem',
-            '144': '36rem',
-          },
-          borderRadius: {
-            '4xl': '2rem',
-          }
+        borderRadius: {
+          '4xl': '2rem',
         }
       }
     },

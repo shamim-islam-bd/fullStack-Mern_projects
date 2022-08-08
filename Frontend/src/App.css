@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 @layer base {
-  h1 {
+  /* h1 {
     @apply text-2xl;
   }
   h2 {
@@ -14,7 +14,7 @@
   }
   h3 {
     @apply text-sm;
-  }
+  } */
 }
 
 @layer components {
