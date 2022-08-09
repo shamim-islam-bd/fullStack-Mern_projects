@@ -27,3 +27,41 @@
   left: 0;
   margin: auto;
 }
+
+.bg {
+  background-color: red;
+}
+
+/*----- control btn -------*/
+.homeSlide .control-btn .next,
+.homeSlide .control-btn .prev {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 20px;
+  height: 20px;
+  line-height: 60px;
+  /* background: #0f3460; */
+  border-radius: 10px;
+  transform: 0.5s;
+  z-index: 5;
+}
+.homeSlide .control-btn .prev {
+  left: 3px;
+}
+.homeSlide .control-btn .next {
+  right: -20px;
+}
+.homeSlide .control-btn .prev i,
+.homeSlide .control-btn .next i {
+  /* bottom: 5%; */
+  font-size: 30px;
+  transition: 0.5s;
+  color: rgb(230, 15, 15);
+}
+/* .control-btn .prev:hover,
+.control-btn .next:hover {
+  background: #e94560;
+  color: white;
+  cursor: pointer;
+} */

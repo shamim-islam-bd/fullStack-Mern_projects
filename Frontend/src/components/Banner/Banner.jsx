@@ -2,8 +2,67 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import "./Banner";
+import "./Banner.css";
 import Sdata from "./Sdata";
+
+// Next Arrow
+// function SampleNextArrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{
+//         ...style,
+//         display: "block",
+//         background: "red",
+//         fontSize: "40px",
+//         borderRadius: "50%",
+//         marginRight: "-30px",
+//       }}
+//       onClick={onClick}
+//     />
+//   );
+// }
+
+// Preview Arrow
+// function SamplePrevArrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{
+//         ...style,
+//         display: "block",
+//         background: "red",
+//         fontSize: "40px",
+//         borderRadius: "50%",
+//         marginLeft: "-30px",
+//       }}
+//       onClick={onClick}
+//     />
+//   );
+// }
+
+const SampleNextArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <div className="control-btn" onClick={onClick}>
+      <button className="next">
+        <i className="fa fa-long-arrow-alt-right"></i>
+      </button>
+    </div>
+  );
+};
+const SamplePrevArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <div className="control-btn" onClick={onClick}>
+      <button className="prev">
+        <i className="fa fa-long-arrow-alt-left"></i>
+      </button>
+    </div>
+  );
+};
 
 export const Banner = () => {
   const settings = {
@@ -12,34 +71,63 @@ export const Banner = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     appendDots: (dots) => {
-      return <ul style={{ margin: "0px" }}>{dots}</ul>;
+      return <ul style={{ margin: "0px", padding: "30px" }}>{dots}</ul>;
     },
-  };
 
-  console.log("hittig", Sdata.cover);
+    responsive: [
+      //   {
+      //     breakpoint: 1024,
+      //     settings: {
+      //       slidesToShow: 3,
+      //       slidesToScroll: 3,
+      //       infinite: true,
+      //       dots: true
+      //     }
+      //   },
+      //   {
+      //     breakpoint: 600,
+      //     settings: {
+      //       slidesToShow: 2,
+      //       slidesToScroll: 2,
+      //       initialSlide: 2
+      //     }
+      //   },
+      //   {
+      //     breakpoint: 480,
+      //     settings: {
+      //       slidesToShow: 1,
+      //       slidesToScroll: 1
+      //     }
+      //   }
+    ],
+  };
 
   return (
     <div>
-      <section className="homeSlide contentWidth">
-        <div className="container">
+      <section className="homeSlide contentWidth container">
+        <div className="">
           <Slider {...settings}>
             {Sdata.map((value, index) => {
               return (
                 <>
                   <div
-                    className="box flex items-center justify-between top"
+                    className="box lg:flex md:flex items-center lg:justify-between md:justify-between top"
                     key={index}
                   >
                     <div className="left">
-                      <h1 className="lg:text-2xl md:text-2xl">{value.title}</h1>
-                      <p className="sm:text-[14px] py-3">{value.desc}</p>
-                      <button className="btn-primary my-3 px-4 py-2 border-[1px] border-primary rounded-full">
-                        Visit Collections
-                      </button>
+                      <h1>{value.title}</h1>
+                      <p>{value.desc}</p>
+                      <button className="btn-primary">Visit Collections</button>
                     </div>
                     <div className="right">
-                      <img src={value.cover} alt="" />
+                      <img
+                        className="w-full object-cover md:h-full md:w-full"
+                        src={value.cover}
+                        alt=""
+                      />
                     </div>
                   </div>
                 </>

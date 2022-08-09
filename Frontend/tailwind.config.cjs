@@ -11,9 +11,7 @@ module.exports = {
       container: {
         center: true,
       },
-      flex : {
-        
-      },
+
       colors: {
         'primary':'#FD3D57',
         'primary-transparent':'#f2377f',
