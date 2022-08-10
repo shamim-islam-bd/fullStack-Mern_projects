@@ -8,13 +8,9 @@ export const Products = () => {
     setCount(count + 1);
   };
 
-  //   console.log(Sdata.name);
-
-  // console.log(Sdata.name);
-  // console.log(Sdata.price);
   return (
     <>
-      <div className="flex flex-wrap items-center justify-between">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-rows-3">
         {Sdata.map((Sdata) => {
           return (
             <div className="shadow-md">

@@ -33,8 +33,8 @@ export const Catagories = () => {
   return (
     <div>
       <section className="container">
-        <div className="flex lg:flex-row sm:flex-col">
-          <div className="hidden lg:block md:block brands basis-1/4 shadow-lg p-3">
+        <div className="grid lg:grid-cols-3 gap-4">
+          <div className="hidden lg:block lg:col-span-1 shadow-lg p-3">
             <div className="flex justify-around py-3">
               <a href="#">
                 <h1>Brands</h1>
@@ -61,7 +61,7 @@ export const Catagories = () => {
               <button>View All Brands</button>
             </div>
           </div>
-          <div className="p-6 Products items-center basis-3/4">
+          <div className="p-6 items-center lg:col-span-2">
             <div className="title flex justify-between items-center">
               <h2>Mobile Phone</h2>
               <a className="flex items-center" href="#">
