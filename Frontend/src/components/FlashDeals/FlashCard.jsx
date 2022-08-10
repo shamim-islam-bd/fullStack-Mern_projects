@@ -36,9 +36,45 @@ const FlashCard = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
+    // centerMode: true, // important for responsive
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 2024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -73,7 +109,7 @@ const FlashCard = () => {
                     {/* <button onClick={() => addToCart(productItems)}>
                       <i className="fa fa-plus"></i>
                     </button> */}
-                    <button>
+                    <button className="Plus_button">
                       <i className="fa fa-plus"></i>
                     </button>
                   </div>
