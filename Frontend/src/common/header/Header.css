@@ -2,30 +2,24 @@
 /* .contentWidth {
   width: 77%;
 } */
-.category {
+
+.headerSearch {
+  position: relative;
+}
+.HeaderCategory {
   box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
   background-color: #fff;
-  width: 23%;
-  height: 510px;
-  padding: 15px 0;
-  border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 420px;
+  right: -65px;
+  position: absolute;
+  z-index: 999;
 }
-/* .category img {
-  width: 30px;
-  height: 30px;
-  margin-top: 10px;
-  object-fit: contain;
-} */
-.category span {
-  margin: 10px 20px;
-  text-transform: capitalize;
-}
-.category .box {
+
+.HeaderCategory .Ctgbox {
   transition: 0.5s;
   padding: 0 20px;
 }
-.category .box:hover {
+.HeaderCategory .Ctgbox:hover {
   background-color: #ffe1e6;
   cursor: pointer;
 }

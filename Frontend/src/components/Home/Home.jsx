@@ -1,6 +1,6 @@
 import React from "react";
 import { Footer } from "../../common/Footer/Footer";
-import { Header } from "../../common/Header/Header";
+import { HeaderMain } from "../../common/Header/HeaderMain";
 import { Banner } from "../Banner/Banner";
 import { Catagories } from "../Catagories/Catagories";
 import { Feathers } from "../Feathers/Feathers";
@@ -11,7 +11,7 @@ import "./Home.css";
 export const Home = () => {
   return (
     <>
-      <Header />
+      <HeaderMain />
       <Banner />
       <Feathers />
       <FlashDeals />

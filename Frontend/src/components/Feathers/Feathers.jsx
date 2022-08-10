@@ -5,8 +5,6 @@ import service from "../../assets/images/icons/service-hours.svg";
 
 export const Feathers = () => {
   const style = {
-    // position: "absolute",
-    // inset: " 0px auto auto 0px",
     margin: "0px",
     transform: "translate3d(275.229px, 69.7248px, 0px)",
   };

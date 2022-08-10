@@ -41,7 +41,6 @@
   width: 20px;
   height: 20px;
   line-height: 60px;
-  /* background: #0f3460; */
   border-radius: 10px;
   transform: 0.5s;
   z-index: 5;
@@ -54,14 +53,7 @@
 }
 .homeSlide .control-btn .prev i,
 .homeSlide .control-btn .next i {
-  /* bottom: 5%; */
   font-size: 30px;
   transition: 0.5s;
   color: rgb(230, 15, 15);
 }
-/* .control-btn .prev:hover,
-.control-btn .next:hover {
-  background: #e94560;
-  color: white;
-  cursor: pointer;
-} */
