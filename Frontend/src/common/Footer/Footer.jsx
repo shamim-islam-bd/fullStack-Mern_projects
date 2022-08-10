@@ -1,18 +1,19 @@
 import React from "react";
+import logo from "../../assets/images/icons/logo.svg";
 
 export const Footer = () => {
   return (
-    <div>
-      <footer class="bg-gradient-to-r from-gray-100 via-[#bce1ff] to-gray-100">
+    <>
+      <footer class="bg-blue-transparent text-white mt-5">
         <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
           <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div>
-              <img src="#" class="mr-5 h-6 sm:h-9" alt="logo" />
-              <p class="max-w-xs mt-4 text-sm text-gray-600">
+              <img src={logo} alt="logo" />
+              <p class="max-w-xs mt-4 text-sm text-white">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptas, accusantium.
               </p>
-              <div class="flex mt-8 space-x-6 text-gray-600">
+              <div class="flex mt-8 space-x-6 text-white text">
                 <a
                   class="hover:opacity-75"
                   href
@@ -114,7 +115,7 @@ export const Footer = () => {
             <div class="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
               <div>
                 <p class="font-medium">Company</p>
-                <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                <nav class="flex flex-col mt-4 space-y-2 text-sm text-white">
                   <a class="hover:opacity-75" href>
                     {" "}
                     About{" "}
@@ -135,7 +136,7 @@ export const Footer = () => {
               </div>
               <div>
                 <p class="font-medium">Services</p>
-                <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                <nav class="flex flex-col mt-4 space-y-2 text-sm text-white">
                   <a class="hover:opacity-75" href>
                     {" "}
                     1on1 Coaching{" "}
@@ -160,7 +161,7 @@ export const Footer = () => {
               </div>
               <div>
                 <p class="font-medium">Helpful Links</p>
-                <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                <nav class="flex flex-col mt-4 space-y-2 text-sm text-white">
                   <a class="hover:opacity-75" href>
                     {" "}
                     Contact{" "}
@@ -177,7 +178,7 @@ export const Footer = () => {
               </div>
               <div>
                 <p class="font-medium">Legal</p>
-                <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                <nav class="flex flex-col mt-4 space-y-2 text-sm text-white">
                   <a class="hover:opacity-75" href>
                     {" "}
                     Privacy Policy{" "}
@@ -198,9 +199,12 @@ export const Footer = () => {
               </div>
             </div>
           </div>
-          <p class="mt-8 text-xs text-gray-800">© 2022 Comany Name</p>
+          <p class="mt-8 text-xs text-white">© 2022 Comany Name</p>
+          <p class="mt-1 text-xs text-white">
+            Developer - <a href="https://shamim-99728.web.app/">Shamim Islam</a>
+          </p>
         </div>
       </footer>
-    </div>
+    </>
   );
 };

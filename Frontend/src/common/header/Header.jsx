@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import bed2 from "../../assets/images/icons/bed-2.svg";
 import bed from "../../assets/images/icons/bed.svg";
 import logo from "../../assets/images/icons/logo.svg";
@@ -8,6 +8,12 @@ import sofa from "../../assets/images/icons/sofa.svg";
 import terrace from "../../assets/images/icons/terrace.svg";
 
 export const Header = () => {
+  const [shown, setShown] = useState(false);
+
+  const handleCtgs = () => {
+    setShown(!shown);
+  };
+
   let menuBar = document.querySelector("#menuBar");
   // let mobileMenu = document.querySelector("#mobileMenu");
   // let closeMenu = document.querySelector("#closeMenu");
@@ -51,16 +57,57 @@ export const Header = () => {
             </div>
 
             {/* Search */}
-            <div className="xl:max-w-xl lg:max-w-lg lg:flex md:flex relative hidden search-box w-[80%] border-2 rounded-full flex items-center justify-between">
+            <div className="xl:max-w-xl lg:max-w-lg lg:flex md:flex relative hidden search-box w-[80%] border-2 rounded-full items-center justify-between">
               <i className="fa fa-search w-2 text-center text-sm py-3 px-5"></i>
               <input
                 className="w-full p-3 focus:outline-none"
                 type="text"
                 placeholder="Search and hit enter..."
               />
-              <button className="w-[30%] text-center p-2 opacity-1 border-l-2 border-l-primary">
+              <button
+                onClick={handleCtgs}
+                id="dropdownButton"
+                data-dropdown-toggle="dropdown"
+                className="w-[30%] text-center p-2 opacity-1 border-l-2 border-l-primary"
+              >
                 All Category
               </button>
+
+              {/* Header Catagories */}
+              {/* {shown && <HeaderCatagories></HeaderCatagories>} */}
+
+              {/* <!-- Dropdown menu --> */}
+              <div
+                id="dropdown"
+                class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+              >
+                <ul class="py-1" aria-labelledby="dropdownButton">
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Edit
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Export Data
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Delete
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* Icons */}

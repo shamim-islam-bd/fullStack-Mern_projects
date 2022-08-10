@@ -4,16 +4,15 @@ import monyBack from "../../assets/images/icons/money-back.svg";
 import service from "../../assets/images/icons/service-hours.svg";
 
 export const Feathers = () => {
+  const style = {
+    // position: "absolute",
+    // inset: " 0px auto auto 0px",
+    margin: "0px",
+    transform: "translate3d(275.229px, 69.7248px, 0px)",
+  };
+
   return (
     <div>
-      {/* <div className="flex flex-row">
-     <div class="basis-2/4">
-        <i></i>
-     </div>
-     <div class="basis-2/4">02</div>
-     <div class="basis-2/4">03</div>
-    </div> */}
-
       <div class="container py-16">
         <div class="lg:w-10/12 grid md:grid-cols-3 gap-3 lg:gap-6 mx-auto justify-center">
           <div class="border-primary border rounded-sm px-8 lg:px-3 lg:py-6 py-4 flex justify-center items-center gap-5">
