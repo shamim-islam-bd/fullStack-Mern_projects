@@ -148,7 +148,7 @@ export const Navbar = () => {
           <div className="text-xs leading-3">Search</div>
         </a>
         <a
-          href="cart.html"
+          href="#"
           className="text-center text-gray-700 hover:text-primary transition relative"
         >
           <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
