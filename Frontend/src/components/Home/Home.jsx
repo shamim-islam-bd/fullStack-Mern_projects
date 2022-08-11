@@ -1,6 +1,5 @@
 import React from "react";
 import { Footer } from "../../common/Footer/Footer";
-import { HeaderMain } from "../../common/Header/HeaderMain";
 import { Banner } from "../Banner/Banner";
 import { Catagories } from "../Catagories/Catagories";
 import { Feathers } from "../Feathers/Feathers";
@@ -11,7 +10,6 @@ import "./Home.css";
 export const Home = () => {
   return (
     <>
-      <HeaderMain />
       <Banner />
       <Feathers />
       <FlashDeals />

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/icons/logo.svg";
+// import uppderArrow from "../../assets/images/icons/uppderArrow.svg";
 import { HeaderCatagories } from "./HeaderCatagories";
+// import downArrow from "../../assets/images/icons/downArrow.svg";
 
 export const Header = () => {
   const [hide, setHide] = useState(true);
@@ -48,7 +51,9 @@ export const Header = () => {
         <section className="search p-5">
           <div className="container flex items-center justify-between">
             <div className="logo width w-[20%]">
-              <img className="" src={logo} alt="" />
+              <Link to="/">
+                <img src={logo} alt="" />
+              </Link>
             </div>
 
             {/* Search */}
@@ -59,14 +64,22 @@ export const Header = () => {
                 type="text"
                 placeholder="Search and hit enter..."
               />
-              <button
-                onClick={handleCtgs}
-                id="dropdownButton"
-                data-dropdown-toggle="dropdown"
-                className="hidden lg:block xl:block active:bg-gray-100 focus:outline-none focus:ring-gray-400 w-[30%] rounded-r-xl text-center p-3 opacity-1 border-l-2 border-l-primary"
-              >
-                Category
-              </button>
+              <div className="hidden lg:block xl:block w-[30%] rounded-r-xl mx-1 active:bg-gray-100 focus:outline-none focus:ring-gray-400 ">
+                <button
+                  onClick={handleCtgs}
+                  id="dropdownButton"
+                  data-dropdown-toggle="dropdown"
+                  className="px-1 pl-2 text-center py-3 opacity-1 border-l-2 border-l-gray-300"
+                >
+                  Category
+                </button>
+                {!hide ? (
+                  // <i class="fas fa-light fa-arrow-up"></i>
+                  <i class="fas fa-light fa-angle-down"></i>
+                ) : (
+                  <i class="fas fa-light fa-angle-up"></i>
+                )}
+              </div>
               {/* Header Catagories */}
               {!hide && <HeaderCatagories></HeaderCatagories>}
             </div>

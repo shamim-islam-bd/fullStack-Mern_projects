@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import bed2 from "../../assets/images/icons/bed-2.svg";
 import bed from "../../assets/images/icons/bed.svg";
 import office from "../../assets/images/icons/office.svg";
@@ -100,12 +101,13 @@ export const Navbar = () => {
                   <i className="fas fa-chevron-down"></i>
                 </a>
               </div>
-              <a
+              <Link
+                to="/register"
                 href="#"
                 className="ml-auto justify-self-end text-gray-200 hover:text-white transition"
               >
                 Login/Register
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Catagories.css";
 import { Products } from "./Products";
-
 const data = [
   {
     cateImg: "../../../public/images/category/cat-1.png",
@@ -36,9 +36,9 @@ export const Catagories = () => {
         <div className="grid lg:grid-cols-3 gap-4">
           <div className="hidden lg:block lg:col-span-1 shadow-lg p-3">
             <div className="flex justify-around py-3">
-              <a href="#">
+              <Link to="/">
                 <h1>Brands</h1>
-              </a>
+              </Link>
               <span className="text-bold">|</span>
               <a href="#">
                 <h1>Shop</h1>

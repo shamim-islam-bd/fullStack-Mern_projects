@@ -2,7 +2,7 @@ import React from "react";
 
 export const FlashSale = () => {
   return (
-    <div className="flex items-center justify-between container py-5">
+    <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-3 container py-5">
       <div className="p-4 bg-red-200 m-3">
         <div class="max-w-sm w-full lg:max-w-full lg:flex">
           <div class=" border-gray-400 lg:border-gray-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
