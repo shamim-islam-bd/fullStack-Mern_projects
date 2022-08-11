@@ -14,7 +14,7 @@ export const Header = () => {
 
   return (
     <>
-      <section className="hidden lg:block md:block w-full m-auto bg-blue-transparent p-5 text-white">
+      <section className="hidden lg:flex md:flex w-full m-auto bg-blue-transparent p-5 text-white">
         <div className="flex justify-between items-center container">
           <div className="left row">
             {/* <i className="fa fa-phone"></i> */}
