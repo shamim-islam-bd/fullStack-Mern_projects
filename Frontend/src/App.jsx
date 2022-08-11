@@ -2,6 +2,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import { Cart } from "./common/Cart/Cart";
 import { HeaderMain } from "./common/Header/HeaderMain";
 import { Home } from "./components/Home/Home";
 import { Login } from "./components/Register/Login";
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>

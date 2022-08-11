@@ -12,19 +12,6 @@ export const Header = () => {
     setHide(!hide);
   };
 
-  // let menuBar = document.querySelector("#menuBar");
-  // let mobileMenu = document.querySelector("#mobileMenu");
-  // let closeMenu = document.querySelector("#closeMenu");
-
-  // menuBar.addEventListener("click", function () {
-  //   console.log("click");
-  //   mobileMenu.classNameList.remove("hidden");
-  // });
-
-  // closeMenu.addEventListener("click", function () {
-  //   mobileMenu.classNameList.add("hidden");
-  // });
-
   return (
     <>
       <section className="hidden lg:block md:block w-full m-auto bg-blue-transparent p-5 text-white">
@@ -64,9 +51,11 @@ export const Header = () => {
                 type="text"
                 placeholder="Search and hit enter..."
               />
-              <div className="hidden lg:block xl:block w-[30%] rounded-r-xl mx-1 active:bg-gray-100 focus:outline-none focus:ring-gray-400 ">
+              <div
+                onClick={handleCtgs}
+                className="hidden lg:block xl:block w-[30%] rounded-r-xl mx-1 active:bg-gray-100 focus:outline-none focus:ring-gray-400 "
+              >
                 <button
-                  onClick={handleCtgs}
                   id="dropdownButton"
                   data-dropdown-toggle="dropdown"
                   className="px-1 pl-2 text-center py-3 opacity-1 border-l-2 border-l-gray-300"
@@ -74,7 +63,6 @@ export const Header = () => {
                   Category
                 </button>
                 {!hide ? (
-                  // <i class="fas fa-light fa-arrow-up"></i>
                   <i class="fas fa-light fa-angle-down"></i>
                 ) : (
                   <i class="fas fa-light fa-angle-up"></i>
@@ -98,8 +86,8 @@ export const Header = () => {
                 </div>
                 <div className="text-xs leading-3">Wish List</div>
               </a>
-              <a
-                href="#"
+              <Link
+                to="/cart"
                 className="lg:block text-center text-gray-700 hover:text-primary transition hidden relative"
               >
                 <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
@@ -109,7 +97,7 @@ export const Header = () => {
                   <i className="fas fa-shopping-bag"></i>
                 </div>
                 <div className="text-xs leading-3">Cart</div>
-              </a>
+              </Link>
               <a
                 href="#"
                 className="block text-center text-gray-700 hover:text-primary transition"
@@ -123,8 +111,6 @@ export const Header = () => {
           </div>
         </section>
       </header>
-
-      {/* <!-- mobile sidebar menu end --> */}
     </>
   );
 };
