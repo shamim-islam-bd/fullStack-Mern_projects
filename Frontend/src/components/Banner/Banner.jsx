@@ -97,7 +97,7 @@ export const Banner = () => {
                     </div>
                     <div className="right">
                       <img
-                        className="w-full object-cover md:h-full md:w-full"
+                        className="w-full pt-6 object-cover md:h-full md:w-full"
                         src={value.cover}
                         alt=""
                       />

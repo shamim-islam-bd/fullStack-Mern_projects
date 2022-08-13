@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/icons/logo.svg";
-// import uppderArrow from "../../assets/images/icons/uppderArrow.svg";
 import { HeaderCatagories } from "./HeaderCatagories";
-// import downArrow from "../../assets/images/icons/downArrow.svg";
 
 export const Header = () => {
   const [hide, setHide] = useState(true);
@@ -74,9 +72,9 @@ export const Header = () => {
 
             {/* Icons */}
             <div className="space-x-4 flex items-center justify-end w-[20%]">
-              <a
-                href="#"
-                className="block text-center text-gray-700 hover:text-primary transition relative"
+              <Link
+                to="/wishlist"
+                className="block cursor-pointer text-center text-gray-700 hover:text-primary transition relative"
               >
                 <span className="absolute -right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
                   5
@@ -85,7 +83,7 @@ export const Header = () => {
                   <i className="far fa-heart"></i>
                 </div>
                 <div className="text-xs leading-3">Wish List</div>
-              </a>
+              </Link>
               <Link
                 to="/cart"
                 className="lg:block text-center text-gray-700 hover:text-primary transition hidden relative"

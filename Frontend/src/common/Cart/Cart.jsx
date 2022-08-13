@@ -1,25 +1,27 @@
 import React from "react";
 import Home from "../../assets/images/icons/Home.svg";
+import "./Cart.css";
 
 export const Cart = () => {
   return (
-    <div className="container lg:py-10 pb-40">
+    <div className="container lg:py-10 pb-40 CartContainer">
       {/* BreadCumbs */}
       <div className="flex items-center py-5">
         <span>
-          <img className="w-5 ml-3" src={Home} alt="" srcset="" />
+          <img className="w-5" src={Home} alt="" srcset="" />
         </span>
         <span>
           <i class="ml-3 font-md fas fa-light fa-angle-right text-primary"></i>
         </span>
         <span className="ml-3">Shopping Cart</span>
       </div>
-
-      <div className="grid lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 gap-5 container">
-        <div className="col-span-2 ">
+      <hr />
+      <br />
+      <div className="grid lg:grid-cols-4 md:grid-cols-1 sm:grid-cols-1 gap-5 container">
+        <div className="col-span-3 ">
           {/* Card Header */}
           <div className="gap-3">
-            <div className="hidden lg:flex col-span-2 justify-evenly bg-gray-200 p-4">
+            <div className="hidden lg:flex col-span-2 justify-between bg-gray-200 p-4">
               <p>Product</p>
               <p>Quantity</p>
               <p>Total Price</p>
@@ -27,8 +29,8 @@ export const Cart = () => {
           </div>
 
           {/* Card Iteams */}
-          <div className="grid grid-rows-1 grid-cols-3 mt-5 border container">
-            <div className="col-span-1 w-[200px]">
+          <div className="cartMenu grid sm:flex grid-cols-2 mt-5 border">
+            <div className="col-span-1 md:p-2 w-[200px]">
               <img
                 className=""
                 src="https://themes.programmingkit.xyz/rafcart/assets/images/headphone-4.png"
@@ -36,9 +38,9 @@ export const Cart = () => {
                 srcset=""
               />
             </div>
-            <div className="col-span-2 mt-5">
+            <div className="col-span-2 md:p-2 w-full p-5 lg:flex lg:items-center lg:justify-between ml-6">
               <div className="">
-                <h3>Heade phone Extra Bass Headephone.</h3>
+                <span>Heade phone Extra Bass Headephone.</span>
                 <p className="text-primary">$45.00</p>
                 <p>Size: M</p>
               </div>
@@ -48,7 +50,7 @@ export const Cart = () => {
                   <span className="py-1 px-3 border">4</span>
                   <button className="py-1 px-3 border text-xl">+</button>
                 </div>
-                <span className="text-primary">$45.00</span>
+                <span className="text-primary lg:mx-6">$45.00</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-7 w-7 mr-6 text-white"

@@ -1,0 +1,17 @@
+@media (max-width: 576px) {
+  .CartContainer {
+    width: fit-content;
+  }
+  .cartMenu {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+  }
+  .Cartdes {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 576px) {
+}
