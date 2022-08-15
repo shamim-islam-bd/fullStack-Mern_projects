@@ -9,7 +9,7 @@ import { Home } from "./components/Home/Home";
 import { NotFound } from "./components/NotFound/NotFound";
 import { Login } from "./components/Register/Login";
 import { Register } from "./components/Register/Register";
-import { DashHome } from "./Dashboard/DashMain/DashHome";
+import { DashMain } from "./Dashboard/DashMain/DashMain";
 
 function App() {
   return (
@@ -22,13 +22,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<WishList />} />
+          <Route path="dashMain/*" element={<DashMain />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="dashHome/*" element={<DashHome />} />
-
-          {/* <Route path="dashboard" element={<DashMain />}>
-            <Route path="profile" element={<ProfileInfo />} />
-            <Route path="payment" element={<Payment />} />
-          </Route> */}
         </Routes>
       </BrowserRouter>
     </div>

@@ -96,15 +96,15 @@ export const Header = () => {
                 </div>
                 <div className="text-xs leading-3">Cart</div>
               </Link>
-              <a
-                href="#"
-                className="block text-center text-gray-700 hover:text-primary transition"
+              <Link
+                to="/dashMain"
+                className="block cursor-pointer text-center text-gray-700 hover:text-primary transition"
               >
                 <div className="text-2xl">
                   <i className="far fa-user"></i>
                 </div>
                 <div className="text-xs leading-3">Account</div>
-              </a>
+              </Link>
             </div>
           </div>
         </section>
