@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import {
     ALL_PRODUCT_SUCCESS, CLEAR_ERRORS
@@ -22,6 +21,34 @@ export const getProduct = () => {
         }
     }
 }
+
+
+
+
+export const getProductDetails = (id) =>{
+    return async (dispatch) => {
+        try{
+            const {data} = await axios.get(`http://localhost:5000/product/${id}`)
+              console.log(data);
+
+            dispatch({
+                type: ALL_PRODUCT_SUCCESS,
+                payload: data.product,
+            })
+        }catch(err){
+           dispatch({
+              type: ALL_PRODUCT_FAILED,
+              payload: err.res.data.message,
+        }) 
+        }
+    }
+ }
+
+
+
+
+
+
 
 // CLear Errors
 export const clearErrors = () => async(dispatch)=>{

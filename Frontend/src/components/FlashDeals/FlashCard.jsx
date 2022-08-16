@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import swal from "sweetalert";
-import productItems from "./Fdeals";
+// import productItems from "./Fdeals";
 import "./FlashDeals.css";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -32,10 +32,8 @@ const SamplePrevArrow = (props) => {
 
 const FlashCard = () => {
   const dispatch = useDispatch();
-  const { loading, error, products, productsCount } = useSelector(
-    (state) => state.products
-  );
-  // console.log(st);
+  const product = useSelector((state) => state);
+  console.log(product);
 
   useEffect(() => {
     if (error) {
@@ -97,7 +95,7 @@ const FlashCard = () => {
   return (
     <>
       <Slider {...settings}>
-        {productItems.map((productItem) => {
+        {product.map((productItem) => {
           return (
             <div className="box">
               <div className="product mtop">
