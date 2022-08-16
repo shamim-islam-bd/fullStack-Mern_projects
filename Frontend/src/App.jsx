@@ -12,6 +12,8 @@ import { Register } from "./components/Register/Register";
 import { DashMain } from "./Dashboard/DashMain/DashMain";
 
 function App() {
+  // console.log(store);
+
   return (
     <div className="App">
       <BrowserRouter>

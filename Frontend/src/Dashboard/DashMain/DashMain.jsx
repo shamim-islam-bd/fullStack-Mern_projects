@@ -11,7 +11,7 @@ export const DashMain = () => {
       {/* BreadCumbs */}
       <div className="flex items-center py-5">
         <span>
-          <img className="w-5" src={Home} alt="" />
+          <img className="w-5" src={Home} alt="" srcSet="" />
         </span>
         <span>
           <i className="ml-3 font-md fas fa-light fa-angle-right text-primary"></i>

@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import swal from "sweetalert";
 import productItems from "./Fdeals";
 import "./FlashDeals.css";
+
+import { useDispatch, useSelector } from "react-redux";
+import { getProduct } from "../../store/actions/productActions";
 
 const SampleNextArrow = (props) => {
   const { onClick } = props;
@@ -27,6 +31,19 @@ const SamplePrevArrow = (props) => {
 };
 
 const FlashCard = () => {
+  const dispatch = useDispatch();
+  const { loading, error, products, productsCount } = useSelector(
+    (state) => state.products
+  );
+  // console.log(st);
+
+  useEffect(() => {
+    if (error) {
+      return swal(error.message);
+    }
+    dispatch(getProduct());
+  }, [dispatch, error]);
+
   const [count, setCount] = useState(0);
   const increment = () => {
     setCount(count + 1);
